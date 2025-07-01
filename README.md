@@ -3,9 +3,11 @@
 Fluffy - Hagrid's 3-headed guard dog
 
 
-Fluffy is a tool to help monitor sites, and to give me piece of mind that my clients sites are still alive and kicking, and my Cloud Infrastructure skills* are validated.
+Fluffy is a tool to help monitor sites, and to give me peace of mind that my clients sites are still alive and kicking, and my Cloud Infrastructure skills* are validated.
 
 ## How to use
+
+To configure the sites that should be monitored, edit `backend/sites.json` 
 
 Fluffy had a FastAPI backend and a React frontend. To get started, you need to get both services up and running:
 
