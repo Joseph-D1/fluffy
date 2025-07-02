@@ -57,6 +57,22 @@ The goal is to proactively notify users when a site's status changes.
     -   To prevent spamming, add a rule to only send a notification once per outage, until the site comes back up.
 - **Future Expansion:** Design the notification system to be pluggable, allowing for other channels like Slack or Discord to be added later.
 
+### 3. Dead Link Checker
+The goal is to automatically crawl a user's site to find and report broken links.
+
+- **Backend:**
+    -   Add a new library like `BeautifulSoup` for parsing HTML.
+    -   Create a new API endpoint (e.g., `/api/sites/{site_id}/check-links`) that initiates a crawl. This should be a background task, as it could be time-consuming.
+    -   The crawler will:
+        1.  Fetch the site's main page.
+        2.  Find all `<a>` tags and extract their `href` attributes.
+        3.  Make an HTTP request to each link (handling relative vs. absolute URLs).
+        4.  Record any links that don't return a 200-level status code.
+    -   Create a new `DeadLinks` table in the database to store the results, linking them to the site and the time of the check.
+- **Frontend:**
+    -   Add a "Check for Dead Links" button to the site detail view.
+    -   Create a new component or view to display the list of reported dead links, showing the broken URL and the page it was found on.
+
 ## Phase 3: Production & Deployment
 
 This phase focuses on making the application a publicly available, hosted service.
