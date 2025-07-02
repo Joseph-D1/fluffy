@@ -1,6 +1,6 @@
 # Fluffy - a Simple Site Monitor
 
-Fluffy - Hagrid's 3-headed guard dog
+> Fluffy - Hagrid's 3-headed guard dog
 
 
 Fluffy is a tool to help monitor sites, and to give me peace of mind that my clients sites are still alive and kicking, and my Cloud Infrastructure skills* are validated.
