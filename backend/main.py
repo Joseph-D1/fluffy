@@ -32,6 +32,7 @@ async def startup_event():
     asyncio.create_task(monitor_sites())
 
 async def monitor_sites():
+    ''' For each site in the sites file, check if it is up and update the status file '''
     while True:
         with open(SITES_FILE, 'r') as f:
             sites = json.load(f)
@@ -47,6 +48,7 @@ async def monitor_sites():
         await asyncio.sleep(30)  # Check every 30s
 
 async def check_site(client, url):
+    ''' request the site, capture response info '''
     try:
         response = await client.get(url, follow_redirects=True, timeout=10)
         return {
@@ -65,6 +67,7 @@ async def check_site(client, url):
 
 @app.get("/api/status", response_model=List[SiteStatus])
 async def get_status():
+    ''' get the information from the status file to update the frontend '''
     try:
         with open(STATUS_FILE, 'r') as f:
             return json.load(f)
